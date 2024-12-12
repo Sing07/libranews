@@ -1,7 +1,7 @@
 import React from "react";
 import AccountPost from "../_components/AccountPost";
-import { modifiedPosts } from "@/public/dummy";
-import PostV2 from "../_components/PostV2";
+// import { modifiedPosts } from "@/public/dummy";
+// import PostV2 from "../_components/PostV2";
 import PartnerPost from "../_components/PartnerPost";
 import Breaking from "./Breaking";
 
@@ -20,9 +20,10 @@ export default function Middle() {
                 profilePic="/fox.jpeg"
                 postPic="/trump.jpeg"
             />
-            {modifiedPosts.map((i) => (
+            {/* {modifiedPosts.map((i) => (
                 <PostV2 item={i} key={i.title} />
-            ))}
+            ))} */}
+            
         </div>
     );
 }
