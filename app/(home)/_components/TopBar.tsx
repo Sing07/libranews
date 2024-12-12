@@ -11,20 +11,31 @@ import { Flame } from "lucide-react";
 import { Microscope } from "lucide-react";
 import { Podcast } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import logo from "@/public/logo.svg";
 
 const Top = () => {
     return (
         <>
             <div className="flex items-center justify-between content-start bg-cyan-400 py-2 sticky top-0">
-                <span className="ml-2 font-bold">Libra News</span>
+                <h1 className="ml-2 font-bold flex items-center gap-1">
+                    Libra News
+                    <Image
+                        src={logo}
+                        alt="user_logo"
+                        width={30}
+                        height={30}
+                        className="rounded-full object-cover"
+                    />
+                </h1>
                 <input
-                    className=" rounded-md ml-10"
-                    size={70}
+                    className=" rounded-md mr-20"
+                    size={50}
                     type="text"
                     placeholder=" search"
                 />
 
-                <span className="mr-2">
+                <span className="px-5">
                     <SignedOut>
                         <SignInButton>Login</SignInButton>
                     </SignedOut>
