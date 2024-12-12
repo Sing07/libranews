@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import Top from "./_components/TopBar";
+import React from "react";
+import Top from "../(home)/_components/TopBar";
 
-export default function MarketingLayout({ children }: { children: ReactNode }) {
+export default function ProfileLayout({ children }: { children: ReactNode }) {
     return (
         <div className="selection:bg-[hsl(300,65%,52%,20%]">
             <Top />
