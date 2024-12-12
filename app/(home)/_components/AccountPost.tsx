@@ -16,7 +16,7 @@ const AccountPost = () => {
     }
 
     return (
-        <div className="card">
+        <div className="card bg-amber-100">
             {modal && <PopPost item={modifiedPosts[1]} onClik={handleModal} />}
             <div className="flex-col">
                 <div className="top">

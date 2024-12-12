@@ -23,7 +23,7 @@ const PartnerPost = ({
     }
 
     return (
-        <div className="card">
+        <div className="card bg-emerald-200">
             {modal && <PopPost item={modifiedPosts[0]} onClik={handleModal} />}
             <div className="flex-col">
                 <div className="bottom">

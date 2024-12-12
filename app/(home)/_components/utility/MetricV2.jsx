@@ -3,7 +3,6 @@ import { MessageSquare } from "lucide-react";
 import { ChartBar } from "lucide-react";
 import { Forward } from "lucide-react";
 
-
 // import ThumbsUpDownSharpIcon from "@mui/icons-material/ThumbsUpDownSharp";
 // import ForumSharpIcon from "@mui/icons-material/ForumSharp";
 // import AnalyticsSharpIcon from "@mui/icons-material/AnalyticsSharp";
@@ -16,21 +15,21 @@ export default function MetricV2() {
             <div>
                 <div className="flex items-center gap-2">
                     <p className=" w-16">Accuracy</p>
-                    <span className="flex w-20 h-1 bg-gray-300"></span>
+                    <span className="flex w-20 h-1 bg-gray-400"></span>
                 </div>
                 <div className="flex items-center gap-2">
                     <p className=" w-16">Objectivity</p>
-                    <span className="flex w-20 h-1 bg-gray-300"></span>
+                    <span className="flex w-20 h-1 bg-gray-400"></span>
                 </div>
             </div>
             <div className=" ml-6 mr-8">
                 <div className="flex items-center gap-2">
                     <p className=" w-16">Timeliness</p>
-                    <span className="flex w-20 h-1 bg-gray-300"></span>
+                    <span className="flex w-20 h-1 bg-gray-400"></span>
                 </div>
                 <div className="flex items-center gap-2">
                     <p className=" w-16">Relevance</p>
-                    <span className="flex w-20 h-1 bg-gray-300"></span>
+                    <span className="flex w-20 h-1 bg-gray-400"></span>
                 </div>
             </div>
 
