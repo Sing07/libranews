@@ -17,7 +17,7 @@ export default async function ProfileFeed() {
     const userIdString = userInfo._id.toString();
     console.log(userIdString, "line 18");
 
-    let articles = await fetchPosts();
+    const articles = await fetchPosts();
     const cleanarticles = JSON.parse(JSON.stringify(articles));
 
     return (

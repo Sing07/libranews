@@ -4,7 +4,10 @@ import { fetchPostById } from "@/lib/actions/post.actions";
 import Image from "next/image";
 import React from "react";
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+type paramsType = Promise<{ id: string }>;
+
+
+export default async function PostPage({ params }: { params: paramsType }) {
     const { id } = await params;
 
     const post = await fetchPostById(id);

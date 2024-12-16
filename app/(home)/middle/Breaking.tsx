@@ -41,7 +41,7 @@ export default async function Breaking() {
         "&lang=en&country=us&max=10&apikey=" +
         process.env.GNEWS_APIKEY;
 
-    let articles = await fetchPosts();
+    const articles = await fetchPosts();
     const cleanarticles = JSON.parse(JSON.stringify(articles));
     // console.log(cleanarticles, "line 34");
 

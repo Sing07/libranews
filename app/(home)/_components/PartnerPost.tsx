@@ -70,7 +70,7 @@ const PartnerPost = ({
                             </div>
                         </div>
                     </div>
-                    <MetricV2 />
+                    {/* <MetricV2 /> */}
                 </div>
             </div>
         </div>
