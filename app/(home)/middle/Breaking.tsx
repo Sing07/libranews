@@ -65,7 +65,7 @@ export default async function Breaking({ searchQuery }: { searchQuery: string })
 
     return (
         <div>
-            {articles.map((data: Article, index) => (
+            {articles.map((data: Article, index:any) => (
                 <GNewsPost key={index} {...data} />
                 ))}
             {cleanarticles.length === 0 ? (

@@ -9,10 +9,12 @@ import { redirect } from "next/navigation";
 export default async function Page({
     searchParams,
 }: {
-    searchParams: { [key: string]: string };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // This is now a Promise
 }) {
     // handle searchParams like a regular object
-    const query = searchParams.q || ''; // extract the value of 'q' parameter
+        const resolvedSearchParams = await searchParams;
+
+    const query = resolvedSearchParams.q || ""; // extract the value of 'q' parameter
 
     // console.log(searchParams, "line 15");
     console.log(query, "line 16");
@@ -24,7 +26,7 @@ export default async function Page({
                 <div className="flex mt-1 max-w-full mx-auto">
                     <div className=" w-2/12 h-full"></div>
                     <div className=" w-7/12 h-full ">
-                        <Middle searchQuery={query}/>
+                        <Middle searchQuery={query} />
                     </div>
                     <div className=" w-3/12 h-full ">
                         <Right />
@@ -44,7 +46,7 @@ export default async function Page({
                     <Left userId={userInfo._id} />
                 </div>
                 <div className="w-7/12 h-full">
-                    <Middle searchQuery = {query} />
+                    <Middle searchQuery={query} />
                 </div>
                 <div className="w-3/12 h-full top-0 top-[51px]">
                     <Right />

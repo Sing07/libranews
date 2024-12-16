@@ -5,7 +5,7 @@ import AccountPost from "../_components/AccountPost";
 import PartnerPost from "../_components/PartnerPost";
 import Breaking from "./Breaking";
 
-export default function Middle({searchQuery}: {searchQuery: string}) {
+export default function Middle({searchQuery}: any) {
     return (
         <div className="border border-black">
             <Breaking searchQuery = {searchQuery} />
