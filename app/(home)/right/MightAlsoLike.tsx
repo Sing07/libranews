@@ -1,4 +1,4 @@
-import Bob from "./Bob";
+import Bob from "../_components/Bob";
 
 export default function MightAlsoLike() {
     return (

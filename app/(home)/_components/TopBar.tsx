@@ -13,11 +13,13 @@ import { Podcast } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import logo from "@/public/logo.svg";
+import Link from "next/link";
 
 const Top = () => {
     return (
         <>
             <div className="flex items-center justify-between content-start bg-cyan-400 py-2 sticky top-0">
+                <Link href="/"> 
                 <h1 className="ml-2 font-bold flex items-center gap-1">
                     Libra News
                     <Image
@@ -26,11 +28,12 @@ const Top = () => {
                         width={30}
                         height={30}
                         className="rounded-full object-cover"
-                    />
+                        />
                 </h1>
+                        </Link>
                 <input
                     className=" rounded-md mr-20"
-                    size={50}
+                    size={30}
                     type="text"
                     placeholder=" search"
                 />

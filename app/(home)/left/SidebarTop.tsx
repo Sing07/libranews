@@ -3,11 +3,12 @@ import { CircleUserRound, House } from "lucide-react";
 import { Search } from "lucide-react";
 import Link from "next/link";
 
-const SidebarTop = () => {
+export default function SidebarTop({userId} : {userId: string}) {
+    // console.log(userId, "line 7"); // returns new ObjectId(, idk why it works
     return (
         <div className="card">
             <div>
-                <Link href="/profile">
+                <Link href={`/profile/${userId}`}>
                     <h1 className=" flex gap-3 ml-2 py-1 ">
                         <CircleUserRound />
                         Profile
@@ -24,6 +25,4 @@ const SidebarTop = () => {
             </div>
         </div>
     );
-};
-
-export default SidebarTop;
+}

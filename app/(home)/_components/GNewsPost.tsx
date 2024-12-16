@@ -6,7 +6,7 @@ import MetricV2 from "./utility/MetricV2";
 import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
 
-const PartnerPost = ({
+export default function GNewsPost ({
     title,
     description,
     // content,
@@ -25,7 +25,7 @@ const PartnerPost = ({
         name: string;
         url: string;
     };
-}) => {
+}) {
     return (
         <div className="card bg-stone-300">
             <div className="picture-bio flex items-center pb-2">
@@ -87,9 +87,8 @@ const PartnerPost = ({
                 </div>
             </Link>
 
-            <MetricV2 />
+            {/* <MetricV2 /> */}
         </div>
     );
 };
 
-export default PartnerPost;
