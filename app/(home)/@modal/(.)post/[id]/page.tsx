@@ -19,15 +19,23 @@ export default async function PostPage({ params }: { params: paramsType }) {
             PostPageww {id}
             <div className="flex justify-center gap-4 pt-10">
                 <div className="lg:w-2/6 ">
-                    Looking at this current post/news
+                    <span className="bg-red-400 text-xs font-bold p-2 rounded-full m-4">
+                        Looking at this current post/news
+                    </span>
+
                     <UserPost {...cleanPost} />
                 </div>
                 <div className="more-news">
-                    Other post/news reccomendation
+                    <span className="bg-red-400 text-xs font-bold p-2 rounded-full m-4">
+                        Other post/news reccomendation
+                    </span>
+
                     <MightAlsoLike />
                 </div>
                 <div className="compare-news lg:w-2/6">
-                    Can open another post/news here to compare
+                    <span className="bg-red-400 text-xs font-bold p-2 rounded-full m-4">
+                        Can open another post/news here to compare
+                    </span>
                     <UserPost {...cleanPost} />
                 </div>
             </div>

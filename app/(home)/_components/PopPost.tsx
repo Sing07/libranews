@@ -60,15 +60,16 @@ const [underlinedSentences, setUnderlinedSentences] = useState<number[]>([]);
             <div className="overlay w-screen inset-0 fixed bg-gray-800 bg-opacity-80">
                 <button
                     onClick={onClik}
-                    className="bg-white p-2 rounded-md cursor-pointer text-black absolute right-80 top-14"
+                    className=" p-2 rounded-md cursor-pointer text-black absolute right-80 top-14"
                 >
-                    click
+                    <span className="bg-gray-300 rounded-full absolute top-0 start-0 mt-4">
+                        Close
+                    </span>
                 </button>
 
-                {/* <div class="parent h-screen flex items-center justify-center">
-  <div class="child h-4/5 bg-slate-800 max-w-4xl p-8"></div> */}
-                <div className="slate w-5/6 bg-slate-800 content-center mx-auto mt-4 h-4/5 p-4">
-                    <div className="content mx-auto w-2/6 bg-slate-50 rounded px-4 pt-3 h-full overflow-auto">
+                <div className="slate w-5/6 bg-slate-300 content-center mx-auto mt-4 h-screen p-4">
+                <span className="bg-red-400 text-lg font-bold p-2 rounded-full m-4">First version of Post pop-up modal {`(Not practical)`} </span>
+                    <div className="content mx-auto w-4/6 bg-slate-50 rounded px-4 pt-3 h-full overflow-auto">
                         <Image
                             src="/obama.jpeg"
                             width={500}
@@ -76,9 +77,7 @@ const [underlinedSentences, setUnderlinedSentences] = useState<number[]>([]);
                             alt="logo"
                             style={{ objectFit: "cover" }}
                         />
-                        <p className="title pt-5 font-bold text-3xl">
-                            {item.title}
-                        </p>
+                        <p className="title pt-5 font-bold text-3xl">{item.title}</p>
                         <p className="content pt-8 pb-4 leading-loose">
                             {item.content
                                 .split(". ")

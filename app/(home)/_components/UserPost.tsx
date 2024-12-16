@@ -5,6 +5,8 @@ import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
 import { getPostWithUsernames } from "@/lib/actions/post.actions";
 import Comment from "./Comment";
+import DeletePost from "./DeletePost";
+import { currentUser } from "@clerk/nextjs/server";
 
 const extractCaption = (content: string) => {
     return content.slice(0, 50); // Get the first 50 characters
@@ -61,27 +63,38 @@ export default async function UserPost({
     return (
         <>
             <div className="card bg-stone-300">
-                <div className="flex justify-around bg-gray-100">
+                <div className="flex justify-around bg-gray-100 m-2">
                     <section>
-                        <span className="font-light text-xs">
-                            {likesUsernames.join(", ")}{" "}
-                        </span>{" "}
-                        liked this post
+                        {likesUsernames.length > 0 && (
+                            <span className="font-light text-xs">
+                                {likesUsernames.join(", ")}{" "}
+                            </span>
+                        )}
+                        {likesUsernames.length > 0 && <span>liked this post</span>}
                     </section>
+                    |
                     <section>
-                        <span className="font-light text-xs">
-                            {endorsementsUsernames.join(", ")}{" "}
-                        </span>{" "}
-                        endorses this post
+                        {endorsementsUsernames.length > 0 && (
+                            <span className="font-light text-xs">
+                                {endorsementsUsernames.join(", ")}{" "}
+                            </span>
+                        )}
+                        {endorsementsUsernames.length > 0 && (
+                            <span>endorses this post</span>
+                        )}
                     </section>
+                    |
                     <section>
-                        <span className="font-light text-xs">
-                            {sharesUsernames.join(", ")}{" "}
-                        </span>{" "}
-                        shared this post
+                        {sharesUsernames.length > 0 && (
+                            <span className="font-light text-xs">
+                                {sharesUsernames.join(", ")}{" "}
+                            </span>
+                        )}
+                        {sharesUsernames.length > 0 && <span>shared this post</span>}
                     </section>
                 </div>
-                <div className="picture-bio flex items-center pb-2">
+                <DeletePost postId={postId} userId={curentUserId} />
+                <div className="picture-bio flex items-center pb-2 pl-2">
                     <div className="flex overflow-hidden rounded-full shadow-md shadow-gray-900 ">
                         <Image
                             src="/icon.png"
@@ -101,11 +114,13 @@ export default async function UserPost({
                     </div>
                 </div>
 
-                <span className="caption py-2">{caption}</span>
+                <span className="caption py-2 text-sm font-light pl-4">
+                    {caption}
+                </span>
 
                 <Link href={`/post/${postId}`}>
-                    <div className="flex border w-full py-3">
-                        <div className="flex overflow-hidden rounded-md">
+                    <div className="flex border w-full py-3 bg-slate-200 rounded-md">
+                        <div className="flex overflow-hidden  pl-2">
                             {image ? (
                                 <Image
                                     src={image}

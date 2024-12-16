@@ -43,17 +43,36 @@ export async function createPost({
 
         // revalidatePath(path);
     } catch (error: any) {
-        throw new Error(`Failed to create thread: ${error.message}`);
+        throw new Error(`Failed to create post: ${error.message}`);
     }
     revalidatePath("/");
+}
+
+export async function deletePost(postId: string, userId:string) {
+    connectToDB();
+    try {
+        const post = await Post.findById(postId);
+
+
+        if (!post) {
+            throw new Error("Post not found");
+        }
+
+        // check if the user is the author of the post
+        if (post.author.toString() !== userId) {
+            throw new Error("You are not authorized to delete this post");
+        }
+        await Post.findByIdAndDelete(postId);
+
+        revalidatePath("/");
+    } catch (error: any) {
+        throw new Error(`Failed to delete post: ${error.message}`);
+    }
 }
 
 export async function fetchPosts() {
     connectToDB();
 
-    //Calculate the number of posts to skip based on the page number and page size
-
-    // Fetch the posts tat have no parents (top-level threads...)
     const postsQuery = Post.find({})
         .sort({ createdAt: -1 })
         .populate("author", "username"); // 1 for ascending order
@@ -71,16 +90,16 @@ export async function likePost(postId: string, userId: string) {
     const post = await Post.findById(postId);
     const user = await User.findById(userId);
 
-    // console.log(user.username, "line 72");  
+    // console.log(user.username, "line 72");
     if (!post) {
         throw new Error("Post not found");
     }
-    
+
     if (!user) {
         throw new Error("User not found");
     }
 
-    // Check if the user has already liked the post
+    // check if the user has already liked the post
     const isLiked = post.likes.includes(userId);
     // let likeCount = post.likesCount;
 
@@ -122,7 +141,6 @@ export async function endorsePost(postId: string, userId: string) {
 
     if (!user) throw new Error("User not found");
 
-
     // Check if the user has already endorsed the post
     const isEndorsed = post.endorsements.includes(userId);
 
@@ -148,13 +166,11 @@ export async function sharePost(postId: string, userId: string) {
 
     if (!user) throw new Error("User not found");
 
-
     // Check if the user has already endorsed the post
     const isShared = post.shares.includes(userId);
 
     if (isShared) {
         console.log("Already shared");
-
     } else {
         post.shares.push(userId);
         user.sharedPosts.push(postId);
@@ -176,20 +192,15 @@ export async function addCommentToPost(
     const post = await Post.findById(postId);
     const user = await User.findById(userId);
 
-
     if (!post) throw new Error("Post not found");
 
     if (!user) throw new Error("User not found");
-
-
-
 }
 
-export async function getPostWithUsernames (postId:string){
+export async function getPostWithUsernames(postId: string) {
     connectToDB();
 
     try {
-
         const post = await Post.findById(postId)
             .populate("likes", "name") // Populating 'likes' with only the 'username' field
             .populate("endorsements", "name") // Populating 'endorsements' with only the 'username' field
@@ -205,16 +216,18 @@ export async function getPostWithUsernames (postId:string){
         console.error("Error retrieving post with user details:", error);
         throw error;
     }
-};
+}
 
 export async function fetchPostById(postId: string) {
-
     try {
         // TODO: Populate Community
-        const post = await Post.findById(postId)
+        const post = await Post.findById(postId).populate({
+            path: "author",
+            select: "username", 
+        });;
 
         return post;
     } catch (err: any) {
-        throw new Error(`Unable to fetch thread: ${err.message}`);
+        throw new Error(`Unable to fetch post: ${err.message}`);
     }
 }
