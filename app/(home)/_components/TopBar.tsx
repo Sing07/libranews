@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 
 import { Trophy } from "lucide-react";
@@ -14,29 +16,26 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import logo from "@/public/logo.svg";
 import Link from "next/link";
+import SearchInput from "./SearchInput";
 
 const Top = () => {
     return (
         <>
-            <div className="flex items-center justify-between content-start bg-cyan-400 py-2 sticky top-0">
-                <Link href="/"> 
-                <h1 className="ml-2 font-bold flex items-center gap-1">
-                    Libra News
-                    <Image
-                        src={logo}
-                        alt="user_logo"
-                        width={30}
-                        height={30}
-                        className="rounded-full object-cover"
+            <div className="flex items-center justify-between content-start bg-cyan-400 py-2 sticky top-0 z-50">
+                <Link href="/">
+                    <h1 className="ml-2 font-bold flex items-center gap-1">
+                        Libra News
+                        <Image
+                            src={logo}
+                            alt="user_logo"
+                            width={30}
+                            height={30}
+                            className="rounded-full object-cover"
                         />
-                </h1>
-                        </Link>
-                <input
-                    className=" rounded-md mr-20"
-                    size={30}
-                    type="text"
-                    placeholder=" search"
-                />
+                    </h1>
+                </Link>
+                <SearchInput />
+                
 
                 <span className="px-5">
                     <SignedOut>

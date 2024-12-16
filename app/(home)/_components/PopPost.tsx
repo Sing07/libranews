@@ -56,7 +56,7 @@ const [underlinedSentences, setUnderlinedSentences] = useState<number[]>([]);
     }, [item, onClik]);
 
     return (
-        <div className="modal whitespace-pre-line inset-0 fixed ">
+        <div className="modal whitespace-pre-line inset-0 fixed mt-36 ">
             <div className="overlay w-screen inset-0 fixed bg-gray-800 bg-opacity-80">
                 <button
                     onClick={onClik}
@@ -67,7 +67,7 @@ const [underlinedSentences, setUnderlinedSentences] = useState<number[]>([]);
                     </span>
                 </button>
 
-                <div className="slate w-5/6 bg-slate-300 content-center mx-auto mt-4 h-screen p-4">
+                <div className="slate w-5/6 bg-slate-300 content-center mx-auto mt-4 h-screen p-20">
                 <span className="bg-red-400 text-lg font-bold p-2 rounded-full m-4">First version of Post pop-up modal {`(Not practical)`} </span>
                     <div className="content mx-auto w-4/6 bg-slate-50 rounded px-4 pt-3 h-full overflow-auto">
                         <Image

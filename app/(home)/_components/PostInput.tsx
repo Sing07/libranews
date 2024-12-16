@@ -15,21 +15,22 @@ export default function PostInput({ userId }: { userId: string }) {
                 <div className="flex items-center gap-2">
                     <CircleUserRound size={28} />
                     <input
-                        className="rounded-full p-1 w-full"
+                        onClick={openModal}
+                        className="rounded-full p-1 w-full focus:outline-none "
                         placeholder="What's on your mind?"
                     />
                 </div>
                 <div className="br-after-pp text-center py-3 px-4">
                     <hr className="border-t border-neutral-900" />
                 </div>
-                <div className="flex justify-around text-sm">
+                {/* <div className="flex justify-around text-sm pb-3">
                     <p>Live video</p>
                     <p>Photo</p>
                     <p>Live event</p>
-                </div>
+                </div> */}
                 <Button className="bg-slate-500" onClick={openModal}>
-                    Create Peeost
-                </Button>{" "}
+                    Create Post
+                </Button>
                 <PostForm user={userId} isOpen={modalIsOpen} onClose={closeModal} />
             </div>
         </>

@@ -11,6 +11,7 @@ export default async function Right() {
 
     if (!user) return (
         <div className="border border-black space-y-4">
+
             <Happening />
             <Suggestions />
         </div>
@@ -21,7 +22,7 @@ export default async function Right() {
     const userIdString = userInfo._id.toString();
 
     return (
-        <div className="border border-black space-y-4">
+        <div className="border border-black space-y-4 ">
             <PostInput userId={userIdString} />
             <Happening />
             <Suggestions />

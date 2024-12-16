@@ -5,10 +5,10 @@ import AccountPost from "../_components/AccountPost";
 import PartnerPost from "../_components/PartnerPost";
 import Breaking from "./Breaking";
 
-export default function Middle() {
+export default function Middle({searchQuery}: {searchQuery: string}) {
     return (
         <div className="border border-black">
-            <Breaking />
+            <Breaking searchQuery = {searchQuery} />
             <AccountPost />
             <PartnerPost
                 title = 'US debt ceiling: Joe Biden and Kevin McCarthy seek to break impasse'

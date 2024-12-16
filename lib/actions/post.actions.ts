@@ -75,13 +75,64 @@ export async function fetchPosts() {
 
     const postsQuery = Post.find({})
         .sort({ createdAt: -1 })
-        .populate("author", "username"); // 1 for ascending order
+        .populate("author", "username name"); // 1 for ascending order
 
     const posts = await postsQuery.exec();
     // console.log(posts, "line 113");
     const plainPosts = posts.map((post) => post.toObject());
 
     return plainPosts;
+}
+
+export async function fetchSharedPosts(userId: string) {
+    connectToDB();
+
+    try {
+        
+        // Find the user by their ID and populate the sharedPosts field with Post data
+         const user = await User.findById(userId).populate({
+             path: "sharedPosts", // This will populate sharedPosts (assumed to be an array of Post IDs)
+             populate: {
+                 path: "author", // Populate the author field inside the shared post
+                 select: "username name", // Specify the fields to fetch from the User model
+             },
+         });
+
+        // If the user exists, return the shared posts
+        if (user) {
+            return user.sharedPosts;
+        } else {
+            throw new Error("User not found");
+        }
+    } catch (error) {
+        console.error("Error fetching shared posts:", error);
+        throw error;
+    }
+}
+
+export async function fetchEndorsedPosts(userId: string) {
+    connectToDB();
+
+    try {
+        // Find the user by their ID and populate the sharedPosts field with Post data
+        const user = await User.findById(userId).populate({
+            path: "endorsedPosts", // This will populate endorsedPosts (assumed to be an array of Post IDs)
+            populate: {
+                path: "author", // Populate the author field inside the endorsed post
+                select: "username name", // Specify the fields to fetch from the User model
+            },
+        });
+
+        // If the user exists, return the shared posts
+        if (user) {
+            return user.endorsedPosts;
+        } else {
+            throw new Error("User not found");
+        }
+    } catch (error) {
+        console.error("Error fetching endorsed posts:", error);
+        throw error;
+    }
 }
 
 export async function likePost(postId: string, userId: string) {
@@ -154,6 +205,8 @@ export async function endorsePost(postId: string, userId: string) {
     // Save both the post and the user with the updated arrays
     await post.save();
     await user.save();
+    revalidatePath("/");
+    
 }
 
 export async function sharePost(postId: string, userId: string) {
@@ -180,6 +233,8 @@ export async function sharePost(postId: string, userId: string) {
     // Save both the post and the user with the updated arrays
     await post.save();
     await user.save();
+    revalidatePath("/");
+
 }
 
 export async function addCommentToPost(
@@ -223,8 +278,8 @@ export async function fetchPostById(postId: string) {
         // TODO: Populate Community
         const post = await Post.findById(postId).populate({
             path: "author",
-            select: "username", 
-        });;
+            select: "username name", 
+        });
 
         return post;
     } catch (err: any) {

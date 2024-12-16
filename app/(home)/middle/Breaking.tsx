@@ -5,15 +5,7 @@ import UserPosts from "../_components/UserPost";
 import { currentUser } from "@clerk/nextjs/server";
 import { fetchUser } from "@/lib/actions/user.actions";
 
-export default async function Breaking() {
-    // const apikey = "8de7b172bf846c381d2cb3c7c2f9dda2";
-    // const category = "nation";
-    // const url =
-    //     "https://gnews.io/api/v4/top-headlines?category=" +
-    //     category +
-    //     "&lang=en&country=us&max=10&apikey=" +
-    //     apikey;
-
+export default async function Breaking({ searchQuery }: { searchQuery: string }) {
     const user = await currentUser();
 
     if (!user) return null;
@@ -35,65 +27,47 @@ export default async function Breaking() {
     };
 
     const category = "nation";
-    const url =
-        "https://gnews.io/api/v4/top-headlines?category=" +
-        category +
-        "&lang=en&country=us&max=10&apikey=" +
-        process.env.GNEWS_APIKEY;
+    
+    let url =
+    "https://gnews.io/api/v4/top-headlines?category=" +
+    category +
+    "&lang=en&country=us&max=10&apikey=" +
+    process.env.GNEWS_APIKEY;
+    
+    if (searchQuery == '') {
+        console.log("searchQuery is empty line 31");
+    } else {
+        console.log("line 33 searchQuery is:", searchQuery);
+        url =
+            "https://gnews.io/api/v4/top-headlines?category=" +
+            category +
+            "&lang=en&country=us&max=10&apikey=" +
+            process.env.GNEWS_APIKEY + "&q=" + searchQuery;
+    }
 
-    const articles = await fetchPosts();
-    const cleanarticles = JSON.parse(JSON.stringify(articles));
+
+    const posts = await fetchPosts();
+    const cleanarticles = JSON.parse(JSON.stringify(posts));
     // console.log(cleanarticles, "line 34");
 
-    // let articles = [];
-    // try {
-    //     const response = await fetch(url);
-    //     const data = await response.json();
-    //     articles = data.articles;
-    //     for (let i = 0; i < articles.length; i++) {
-    //         console.log("****Here");
-    //         console.log("\nTitle: " + articles[i]["title"]);
-    //         console.log("Description: " + articles[i]["description"] + "\n");
-    //     }
-    // } catch (error) {
-    //     console.error("Error fetching articles:", error);
-    // }
+    let articles = [];
 
-    // const articles = await fetch(url)
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data) {
-    //         const articles = data.articles;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
 
-    //         for (let i = 0; i < articles.length; i++) {
-    //             // articles[i].title
-    //             console.log("****Here")
-    //             console.log("\nTitle: " + articles[i]["title"]);
-    //             // articles[i].description
-    //             console.log("Description: " + articles[i]["description"] + "\n");
-    //             // You can replace {property} below with any of the article properties returned by the API.
-    //             // articles[i].{property}
-    //             // console.log(articles[i]['{property}']);
-
-    //             // Delete this line to display all the articles returned by the request. Currently only the first article is displayed.
-    //             // break;
-    //         }
-    //     });
+        if (data && Array.isArray(data.articles)) {
+            articles = data.articles;
+        }
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+    }
 
     return (
-        // <div className="">
-        //     {/* <h1 className="text-3xl font-bold">Breaking</h1> */}
-        //     {/* {articles.map((data: Article) => (
-        //         <GNewsPost key={data.publishedAt} {...data} />
-        //     ))} */}
-
-        //     {articles.map((data) => (
-        //         <GNewsPost key={data.createdAt} {...data} />
-        //     ))}
-        // </div>
-
-        <div className="">
+        <div>
+            {articles.map((data: Article, index) => (
+                <GNewsPost key={index} {...data} />
+                ))}
             {cleanarticles.length === 0 ? (
                 <p>No posts found</p>
             ) : (

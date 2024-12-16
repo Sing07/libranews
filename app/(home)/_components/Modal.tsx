@@ -19,7 +19,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
                       Refresh this page, and you will be directed to a new page dedicated to this post
                   </span>
                   {/* <div className="border-2 border-sky-500"> */}
-                  <DialogTitle>Custom Dialog</DialogTitle>
+                  <DialogTitle hidden>Custom Dialog</DialogTitle>
                   {/* <DialogDescription>
                           This is a customized dialog component from the shadcn UI
                           library.

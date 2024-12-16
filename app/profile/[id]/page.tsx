@@ -4,12 +4,22 @@ import ProfileInfo from "../_components/ProfileInfo";
 import ProfileStats from "../_components/ProfileStats";
 import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
+import { fetchUser } from "@/lib/actions/user.actions";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function page() {
+type paramsType = Promise<{ id: string }>;
+
+export default async function ProfilePage({ params }: { params: paramsType }) {
+    const clerkUser = await currentUser();
+
+    if (!clerkUser) return null;
+
+    const userInfo = await fetchUser(clerkUser.id);
+
     return (
         <>
             <div className="w-full bg-slate-400 ">
-                <div className="flex w-[full]  overflow-hidden justify-center ">
+                <div className="flex w-[full] overflow-hidden justify-center ">
                     <div className="picture-bio flex flex-col px-6">
                         <div>
                             <Image
@@ -33,7 +43,7 @@ export default function page() {
                                 />
                             </div>
                             <div className="pl-5 pt-6">
-                                <h1 className="text-2xl font-bold">Profile Name</h1>
+                                <h1 className="text-2xl font-bold">{userInfo.name}</h1>
                                 <p className="text-xs text-gray-600">111 friends</p>
                                 <div className="favs flex mt-2 ">
                                     <CircleUserRound className="-ml-2" />

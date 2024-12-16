@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function GNewsPost ({
     title,
     description,
-    // content,
+    content,
     url,
     image,
     publishedAt,

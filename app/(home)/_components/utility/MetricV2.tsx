@@ -1,9 +1,8 @@
 "use client";
 
 import { addCommentToPost, endorsePost, likePost, sharePost } from "@/lib/actions/post.actions";
-import { ThumbsUp } from "lucide-react";
+import { Handshake, ThumbsUp } from "lucide-react";
 import { MessageSquare } from "lucide-react";
-import { ChartBar } from "lucide-react";
 import { Forward } from "lucide-react";
 import { useState } from "react";
 
@@ -61,17 +60,21 @@ export default function MetricV2({
 
             <div className="flex items-center gap-3 justify-center pl-4">
                 <button onClick={handleLike}>
+                    Like
                     <ThumbsUp color={isLiked ? "#3e9392" : "#000000"} />
                     {likesCount}
                 </button>
-                <button onClick = {handleComment}>
+                <button onClick={handleComment}>
+                    Comment
                     <MessageSquare />
                 </button>
-                <button onClick = {handleEndorse}>
-                    <ChartBar />
+                <button onClick={handleEndorse}>
+                    Endorse
+                    <Handshake />
                 </button>
 
-                <button onClick = {handleShare}>
+                <button onClick={handleShare}>
+                    Share
                     <Forward />
                 </button>
             </div>

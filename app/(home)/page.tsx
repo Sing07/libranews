@@ -15,7 +15,7 @@ export default async function Home() {
                     <div className=" w-2/12 h-full">
                     </div>
                     <div className=" w-7/12 h-full ">
-                        <Middle />
+                        <Middle searchQuery="" />
                     </div>
                     <div className=" w-3/12 h-full ">
                         <Right />
@@ -30,13 +30,13 @@ export default async function Home() {
     return (
         <main className="min-h-screen flex-col items-center justify-between ">
             <div className="flex mt-1 max-w-full mx-auto">
-                <div className=" w-2/12 h-full">
-                    <Left userId = {userInfo._id} />
+                <div className=" w-2/12 h-full sticky top-0 top-[51px]">
+                    <Left userId={userInfo._id} />
                 </div>
                 <div className=" w-7/12 h-full ">
-                    <Middle />
+                    <Middle searchQuery=""/>
                 </div>
-                <div className=" w-3/12 h-full ">
+                <div className=" w-3/12 h-full top-0 top-[51px]">
                     <Right />
                 </div>
             </div>

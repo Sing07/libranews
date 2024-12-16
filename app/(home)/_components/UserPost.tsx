@@ -9,7 +9,11 @@ import DeletePost from "./DeletePost";
 import { currentUser } from "@clerk/nextjs/server";
 
 const extractCaption = (content: string) => {
-    return content.slice(0, 50); // Get the first 50 characters
+    // Check if content is a valid string
+    if (typeof content === "string") {
+        return content.slice(0, 50); // Get the first 50 characters
+    }
+    return ""; // Return empty string if content is not a valid string
 };
 
 export default async function UserPost({
@@ -26,7 +30,7 @@ export default async function UserPost({
 }: {
     _id: string;
     title: string;
-    author: { username: string; _id: string };
+    author: { name: string; username: string; _id: string } ;
     content: string;
     caption: string;
     image: string;
@@ -36,11 +40,8 @@ export default async function UserPost({
     curentUserId: string;
 }) {
     const description = extractCaption(content);
-    const { username } = author;
-
-    // const endorsements = await fetchEndorsements(postId);
-    // const likes = await fetchLikesz(postId);
-    // const shares = await fetchShares(postId);
+    const { username, name } = author;
+    console.log(author, "line 40")
 
     const postDetails = await getPostWithUsernames(postId);
 
@@ -105,7 +106,7 @@ export default async function UserPost({
                         />
                     </div>
                     <div className="ml-3 ">
-                        <span className="user-name font-bold">{username}</span>
+                        <span className="user-name font-bold">{name}</span>
                         <span className=" block font-light text-sm">
                             {formatDistanceToNowStrict(new Date(createdAt), {
                                 addSuffix: true,
