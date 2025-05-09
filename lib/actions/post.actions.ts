@@ -177,6 +177,7 @@ export async function likePost(postId: string, userId: string) {
     // Save both the post and the user with the updated arrays
     await post.save();
     await user.save();
+    revalidatePath("/");
 
     // Return the updated like count and whether the post is liked
     return { likeCount: post.likesCount, isLiked: !isLiked };

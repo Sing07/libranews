@@ -10,8 +10,8 @@ const NewsBites = ({
     };
 }) => {
     return (
-        <div className="card shadow-none">
-            <h1 className=" cursor-pointer text-sm py-2">
+        <div className="card shadow-none my-1">
+            <h1 className=" cursor-pointer text-sm font-semibold">
                 {item.title.slice(0, 50)}...
             </h1>
         </div>

@@ -26,8 +26,8 @@ export default async function ProfilePage({ params }: { params: paramsType }) {
                                 src="/obama.jpeg"
                                 alt="Cover"
                                 layout="fixed"
-                                width={1000}
-                                height={200}
+                                width={700}
+                                height={100}
                                 className="object-cover rounded-md"
                             />
                         </div>

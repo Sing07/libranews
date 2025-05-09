@@ -16,7 +16,8 @@ const AccountPost = () => {
     }
 
     return (
-        <div className="card bg-amber-100">
+        <div className="card bg-amber-100 ">
+            <span className="font-semibold bg-red-200 rounded-lg px-2 margin">Sample Account Post</span>
             {modal && <PopPost item={modifiedPosts[1]} onClik={handleModal} />}
             <div className="flex-col">
                 <div className="top">
@@ -48,7 +49,7 @@ const AccountPost = () => {
                             name="caption"
                             overflow-y="hidden"
                             box-sizing="border-box"
-                            style={{ border: "none", outline: "none", resize: "none" }}
+                            style={{ resize: "none" }}
                         ></textarea>
                     </div>
                 </div>
@@ -82,8 +83,7 @@ const AccountPost = () => {
                         </div>
                     </div>
 
-                    <MetricV1/>
-
+                    <MetricV1 />
                 </div>
             </div>
         </div>

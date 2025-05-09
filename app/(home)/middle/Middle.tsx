@@ -7,7 +7,7 @@ import Breaking from "./Breaking";
 
 export default function Middle({searchQuery}: any) {
     return (
-        <div className="border border-black">
+        <div className="">
             <Breaking searchQuery = {searchQuery} />
             <AccountPost />
             <PartnerPost

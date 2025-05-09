@@ -12,7 +12,7 @@ export default async function Page({
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // This is now a Promise
 }) {
     // handle searchParams like a regular object
-        const resolvedSearchParams = await searchParams;
+    const resolvedSearchParams = await searchParams;
 
     const query = resolvedSearchParams.q || ""; // extract the value of 'q' parameter
 

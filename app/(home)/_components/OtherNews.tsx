@@ -1,4 +1,4 @@
-import NewsBob from "../_components/NewsBob";
+import NewsBob from "./NewsBob";
 
 export default function OtherNews() {
     return (

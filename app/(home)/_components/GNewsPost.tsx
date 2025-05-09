@@ -5,6 +5,7 @@ import Image from "next/image";
 import MetricV2 from "./utility/MetricV2";
 import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
+import MetricV1 from "./utility/MetricV1";
 
 export default function GNewsPost ({
     title,
@@ -27,7 +28,7 @@ export default function GNewsPost ({
     };
 }) {
     return (
-        <div className="card bg-stone-300">
+        <div className="card bg-stone-300 mb-2">
             <div className="picture-bio flex items-center pb-2">
                 <div className="flex overflow-hidden rounded-full shadow-md shadow-gray-900 ">
                     <Image
@@ -87,7 +88,8 @@ export default function GNewsPost ({
                 </div>
             </Link>
 
-            {/* <MetricV2 /> */}
+            <MetricV1 />
+
         </div>
     );
 };

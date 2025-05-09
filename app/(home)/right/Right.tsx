@@ -10,7 +10,7 @@ export default async function Right() {
     const user = await currentUser();
 
     if (!user) return (
-        <div className="border border-black space-y-4">
+        <div className="space-y-4">
 
             <Happening />
             <Suggestions />
@@ -22,7 +22,7 @@ export default async function Right() {
     const userIdString = userInfo._id.toString();
 
     return (
-        <div className="border border-black space-y-4 ">
+        <div className=" space-y-4 mr-3">
             <PostInput userId={userIdString} />
             <Happening />
             <Suggestions />

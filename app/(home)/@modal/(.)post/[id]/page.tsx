@@ -1,7 +1,7 @@
 import { Modal } from "@/app/(home)/_components/Modal";
 import UserPost from "@/app/(home)/_components/UserPost";
 import MightAlsoLike from "@/app/(home)/right/MightAlsoLike";
-import OtherNews from "@/app/(home)/right/OtherNews";
+import OtherNews from "@/app/(home)/_components/OtherNews";
 import { fetchPostById } from "@/lib/actions/post.actions";
 import React from "react";
 
@@ -33,7 +33,7 @@ export default async function PostPage({ params }: { params: paramsType }) {
 
                     <div>
                         <OtherNews />
-                        <MightAlsoLike />
+                        {/* <MightAlsoLike /> */}
                     </div>
                 </div>
                 <div className="compare-news lg:w-2/6">

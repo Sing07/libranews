@@ -1,4 +1,5 @@
 "use client";
+import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Router } from "next/router";
 import React, { useState } from "react";
@@ -28,16 +29,19 @@ export default function SearchInput() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                className="rounded-md mr-20"
-                size={30}
-                type="text"
-                placeholder="Search"
-                value={query}
-                onChange={handleChange} // Update query on input change
-                onKeyDown={handleKeyDown} // Handle Enter key down
-            />
-        </form>
+        <div className="">
+            <form onSubmit={handleSubmit}>
+            <Search />
+                <input
+                    className="rounded-2xl bg-slate-200 px-3 ml-2"
+                    size={15}
+                    type="text"
+                    placeholder="Search"
+                    value={query}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                />
+            </form>
+        </div>
     );
 }

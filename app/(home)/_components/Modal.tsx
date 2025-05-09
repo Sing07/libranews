@@ -13,10 +13,11 @@ export function Modal({ children }: { children: React.ReactNode }) {
       <Dialog open={true} onOpenChange={handleOpenChange}>
           <DialogTrigger asChild></DialogTrigger>
 
-          <DialogContent className="sm:max-w-[90vw] sm:max-h-[100vh] overflow-y-auto">
+          <DialogContent className="sm:max-w-[90vw] sm:max-h-[100vh] max-w-[1024px] overflow-y-auto">
               <DialogHeader>
                   <span className="bg-orange-400 text-s font-bold p-2 rounded-full m-4">
-                      Refresh this page, and you will be directed to a new page dedicated to this post
+                      Refresh this page, and you will be directed to a new page dedicated
+                      to this post
                   </span>
                   {/* <div className="border-2 border-sky-500"> */}
                   <DialogTitle hidden>Custom Dialog</DialogTitle>

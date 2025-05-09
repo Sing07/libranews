@@ -29,14 +29,14 @@ export default async function Home() {
         if (!userInfo?.onboarded) redirect("/onboarding");
     return (
         <main className="min-h-screen flex-col items-center justify-between ">
-            <div className="flex mt-1 max-w-full mx-auto">
-                <div className=" w-2/12 h-full sticky top-0 top-[51px]">
+            <div className="flex mt-1 max-w-screen-2xl mx-auto space-x-2">
+                <div className=" w-2/12 h-full sticky top-[91px]">
                     <Left userId={userInfo._id} />
                 </div>
                 <div className=" w-7/12 h-full ">
-                    <Middle searchQuery=""/>
+                    <Middle searchQuery="" />
                 </div>
-                <div className=" w-3/12 h-full top-0 top-[51px]">
+                <div className=" w-3/12 h-full sticky top-[91px]">
                     <Right />
                 </div>
             </div>

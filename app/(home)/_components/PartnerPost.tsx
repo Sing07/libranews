@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import PopPost from "./PopPost";
 import { modifiedPosts } from "@/public/dummy";
-import MetricV2 from "./utility/MetricV2";
+import MetricV1 from "./utility/MetricV1";
 
 const PartnerPost = ({
     title,
@@ -24,6 +24,7 @@ const PartnerPost = ({
 
     return (
         <div className="card bg-emerald-200">
+            <span className="font-semibold bg-red-200 rounded-lg px-2">Partner Post</span>
             {modal && <PopPost item={modifiedPosts[0]} onClik={handleModal} />}
             <div className="flex-col">
                 <div className="bottom">
@@ -70,7 +71,7 @@ const PartnerPost = ({
                             </div>
                         </div>
                     </div>
-                    {/* <MetricV2 /> */}
+                    <MetricV1 />
                 </div>
             </div>
         </div>

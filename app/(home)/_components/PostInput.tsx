@@ -16,7 +16,7 @@ export default function PostInput({ userId }: { userId: string }) {
                     <CircleUserRound size={28} />
                     <input
                         onClick={openModal}
-                        className="rounded-full p-1 w-full focus:outline-none "
+                        className="rounded-full p-1 w-full focus:outline-none bg-slate-200 px-4"
                         placeholder="What's on your mind?"
                     />
                 </div>
