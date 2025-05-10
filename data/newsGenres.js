@@ -4,7 +4,7 @@ export const newsGenres = {
     entertainment: "Entertainment",
     technology: "Technology",
     science: "Science",
-    health: "Gealth",
+    health: "Health",
     business: "Business",
     world: "World",
     local: "Local",

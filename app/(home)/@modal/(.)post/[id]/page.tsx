@@ -1,18 +1,28 @@
 import { Modal } from "@/app/(home)/_components/Modal";
 import UserPost from "@/app/(home)/_components/UserPost";
 import MightAlsoLike from "@/app/(home)/right/MightAlsoLike";
-import OtherNews from "@/app/(home)/_components/OtherNews";
+import OtherNews from "@/app/(home)/_components/SimilarNews";
 import { fetchPostById } from "@/lib/actions/post.actions";
 import React from "react";
 
 type paramsType = Promise<{ id: string }>;
 
-export default async function PostPage({ params }: { params: paramsType }) {
+export default async function PostPage({
+    params,
+    searchParams,
+}: {
+    params: { id: string };
+    searchParams: { compare?: string };
+}) {
     const { id } = await params;
 
-    const post = await fetchPostById(id);
-    console.log(post, "line 10");
-    const cleanPost = JSON.parse(JSON.stringify(post));
+    // const post = await fetchPostById(id);
+    const mainPost = await fetchPostById(params.id);
+    const comparePost = searchParams.compare
+        ? await fetchPostById(searchParams.compare)
+        : null;
+    console.log(mainPost, "line 10");
+    const cleanPost = JSON.parse(JSON.stringify(mainPost));
     console.log(cleanPost, "line 12");
 
     return (
@@ -40,7 +50,24 @@ export default async function PostPage({ params }: { params: paramsType }) {
                     <span className="bg-red-400 text-xs font-bold p-2 rounded-full m-4">
                         Can open another post/news here to compare
                     </span>
-                    <UserPost {...cleanPost} />
+                    {/* <UserPost {...cleanPost} /> */}
+                    {comparePost ? (
+                        <>
+                            <UserPost {...JSON.parse(JSON.stringify(comparePost))} />
+                            <form>
+                                <button
+                                    formAction="?compare="
+                                    className="mt-2 ml-4 text-xs text-blue-500 hover:underline"
+                                >
+                                    Clear Comparison
+                                </button>
+                            </form>
+                        </>
+                    ) : (
+                        <div className="text-sm text-gray-500 m-4">
+                            Click a snippet to compare
+                        </div>
+                    )}
                 </div>
             </div>
         </Modal>

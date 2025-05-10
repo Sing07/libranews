@@ -26,7 +26,7 @@ export default async function ProfileFeed() {
     const cleanarticles = JSON.parse(JSON.stringify(articles));
 
     return (
-        <div className="bg-slate-300 w-full max-w-5xl h-60">
+        <div className="bg-slate-300 w- max-w-3xl h-60">
 
             <PostInput userId={userIdString} />
 

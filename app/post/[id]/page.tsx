@@ -2,12 +2,17 @@ import Top from "@/app/(home)/_components/TopBar";
 import UserPost from "@/app/(home)/_components/UserPost";
 import { fetchPostById } from "@/lib/actions/post.actions";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import React from "react";
 
 type paramsType = Promise<{ id: string }>;
 
 
-export default async function PostPage({ params }: { params: paramsType }) {
+export default async function PostPage({ params, searchParams }: any) {
+    if (searchParams.compare) {
+        redirect(`/post/${params.id}`); // strip ?compare=...
+    }
+
     const { id } = await params;
 
     const post = await fetchPostById(id);

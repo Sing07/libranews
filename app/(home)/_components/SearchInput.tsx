@@ -29,12 +29,11 @@ export default function SearchInput() {
     };
 
     return (
-        <div className="">
-            <form onSubmit={handleSubmit}>
-            <Search />
+        <div className="flex items-center w-full max-w-md">
+            <Search className="w-5 h-5 shrink-0" />
+            <form onSubmit={handleSubmit} className="w-full ml-2">
                 <input
-                    className="rounded-2xl bg-slate-200 px-3 ml-2"
-                    size={15}
+                    className="w-full rounded-2xl bg-slate-200 px-3 py-1"
                     type="text"
                     placeholder="Search"
                     value={query}

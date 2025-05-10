@@ -1,7 +1,3 @@
-'use client'
-
-import React from "react";
-
 import { Trophy } from "lucide-react";
 import { Newspaper } from "lucide-react";
 import { Cpu } from "lucide-react";
@@ -16,6 +12,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import logo from "@/public/logo.svg";
 import Link from "next/link";
+import Ticker from "./Ticker";
 
 const Top = () => {
     return (
@@ -56,6 +53,7 @@ const Top = () => {
                     <Flame />
                     <Microscope />
                     <Podcast />
+                    <Ticker text="🚨 Flash Sale Now Live! | 🚀 New Features Added | 📰 Read Our Latest Blog Post" />
                 </div>
             </div>
         </>
