@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { seedUsersAndPosts } from "./seedUsersPosts";
 
 let isConnected = false;
 
@@ -12,6 +13,7 @@ export const connectToDB = async () => {
         await mongoose.connect(process.env.MONGODB_URL);
         isConnected = true;
         console.log('Connected to DB');
+        await seedUsersAndPosts()
     }catch(err){
         console.error('Error connecting to DB', err);
     }

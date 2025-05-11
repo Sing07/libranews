@@ -54,14 +54,14 @@ export default async function PostPage({
                     {comparePost ? (
                         <>
                             <UserPost {...JSON.parse(JSON.stringify(comparePost))} />
-                            <form>
+                            {/* <form>
                                 <button
                                     formAction="?compare="
                                     className="mt-2 ml-4 text-xs text-blue-500 hover:underline"
                                 >
                                     Clear Comparison
                                 </button>
-                            </form>
+                            </form> */}
                         </>
                     ) : (
                         <div className="text-sm text-gray-500 m-4">

@@ -42,7 +42,7 @@ const Top = () => {
                         </SignedIn>
                     </span>
                 </div>
-                <div className="flex items-center dynamic-topic w-full bg-cyan-100 h-10 border-2 border-black">
+                <div className="flex items-center dynamic-topic w-full bg-cyan-100 h-10 border-2 border-black px-2 space-x-1">
                     <Trophy />
                     <Newspaper />
                     <Cpu />

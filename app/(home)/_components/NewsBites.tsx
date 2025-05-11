@@ -10,7 +10,7 @@ const NewsBites = ({
     };
 }) => {
     return (
-        <div className="card shadow-none my-1">
+        <div className="card shadow-md my-1">
             <h1 className=" cursor-pointer text-sm font-semibold">
                 {item.title.slice(0, 50)}...
             </h1>

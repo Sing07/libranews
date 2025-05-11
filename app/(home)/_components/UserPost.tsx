@@ -7,6 +7,7 @@ import { getPostWithUsernames } from "@/lib/actions/post.actions";
 import Comment from "./Comment";
 import DeletePost from "./DeletePost";
 import { currentUser } from "@clerk/nextjs/server";
+import { Check } from "lucide-react";
 
 const extractCaption = (content: string) => {
     // Check if content is a valid string
@@ -27,10 +28,11 @@ export default async function UserPost({
     updatedAt,
     likesCount,
     curentUserId,
+    isVerified,
 }: {
     _id: string;
     title: string;
-    author: { name: string; username: string; _id: string } ;
+    author: { name: string; username: string; _id: string };
     content: string;
     caption: string;
     image: string;
@@ -38,22 +40,19 @@ export default async function UserPost({
     updatedAt: string;
     likesCount: number;
     curentUserId: string;
+    isVerified: boolean;
 }) {
     const description = extractCaption(content);
     const { username, name } = author;
-    console.log(author, "line 40")
+    console.log(author, "line 40");
 
     const postDetails = await getPostWithUsernames(postId);
 
-    const likesUsernames = postDetails.likes
-        .slice(0, 3)
-        .map((user: any) => user.name);
+    const likesUsernames = postDetails.likes.slice(0, 3).map((user: any) => user.name);
     const endorsementsUsernames = postDetails.endorsements
         .slice(0, 3)
         .map((user: any) => user.name);
-    const sharesUsernames = postDetails.shares
-        .slice(0, 3)
-        .map((user: any) => user.name);
+    const sharesUsernames = postDetails.shares.slice(0, 3).map((user: any) => user.name);
 
     console.log(likesUsernames, "line 50");
     console.log(endorsementsUsernames, "line 51");
@@ -63,9 +62,9 @@ export default async function UserPost({
 
     return (
         <>
-            <div className="card bg-stone-300">
-                <div className="flex justify-around bg-gray-100 m-2">
-                    <section>
+            <div className="card bg-stone-300 rounded-md">
+                <div className="flex justify-around bg-gray-100 m-2 rounded-md text-sm">
+                    <section className="p-0 mx-0">
                         {likesUsernames.length > 0 && (
                             <span className="font-light text-xs">
                                 {likesUsernames.join(", ")}{" "}
@@ -107,6 +106,7 @@ export default async function UserPost({
                     </div>
                     <div className="ml-3 ">
                         <span className="user-name font-bold">{name}</span>
+                        <span>{ isVerified && <Check strokeWidth={3} className="inline rounded-3xl bg-blue-200 ml-2 p-1" />}</span>
                         <span className=" block font-light text-sm">
                             {formatDistanceToNowStrict(new Date(createdAt), {
                                 addSuffix: true,
@@ -115,9 +115,7 @@ export default async function UserPost({
                     </div>
                 </div>
 
-                <span className="caption py-2 text-sm font-light pl-4">
-                    {caption}
-                </span>
+                <span className="caption py-2 text-sm font-light pl-4">{caption}</span>
 
                 <Link href={`/post/${postId}`}>
                     <div className="flex border w-full py-3 bg-slate-200 rounded-md">

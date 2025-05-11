@@ -84,6 +84,31 @@ export async function fetchPosts() {
     return plainPosts;
 }
 
+export async function fetchLikedPosts(userId: string) {
+    connectToDB();
+
+    try {
+        // Find the user by their ID and populate the sharedPosts field with Post data
+        const user = await User.findById(userId).populate({
+            path: "likedPosts", // This will populate sharedPosts (assumed to be an array of Post IDs)
+            populate: {
+                path: "author", // Populate the author field inside the shared post
+                select: "username name", // Specify the fields to fetch from the User model
+            },
+        });
+
+        // If the user exists, return the shared posts
+        if (user) {
+            return user.likedPosts;
+        } else {
+            throw new Error("User not found");
+        }
+    } catch (error) {
+        console.error("Error fetching liked posts:", error);
+        throw error;
+    }
+}
+
 export async function fetchSharedPosts(userId: string) {
     connectToDB();
 

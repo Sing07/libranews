@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ProfileInfo() {
     return (
-        <div className="flex-shrink-0 bg-slate-300 w-72 sm:block hidden px-4 pt-2">
+        <div >
             <div className="political-spectrum">
                 <h1 className="text-xl font-bold">About me</h1>
                 <h2>(Optional Bios)</h2>

@@ -22,7 +22,7 @@ export default async function Right() {
     const userIdString = userInfo._id.toString();
 
     return (
-        <div className=" space-y-4 mr-3">
+        <div className=" space-y-4 ">
             <PostInput userId={userIdString} />
             <Happening />
             <Suggestions />

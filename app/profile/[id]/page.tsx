@@ -67,9 +67,15 @@ export default async function ProfilePage({ params }: { params: paramsType }) {
                 </div>
             </div>
             <div className="flex justify-center ">
-                <ProfileInfo />
-                <ProfileFeed />
-                <ProfileStats />
+                <div className="flex-shrink-0 bg-slate-300 w-72 sm:block hidden px-4 pt-2">
+                    <ProfileInfo />
+                </div>
+                <div className="bg-slate-300 w-2/5 max-lg:w-full max-w-3xl">
+                    <ProfileFeed />
+                </div>
+                <div className=" bg-slate-300 w-72 sm:block ">
+                    <ProfileStats />
+                </div>
             </div>
         </>
     );

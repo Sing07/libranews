@@ -1,7 +1,16 @@
 "use client";
+import { BookImage } from "lucide-react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
-export default function NewsSnippet({ _id, title }: { _id: string; title: string }) {
+export default function NewsSnippet({
+    _id,
+    title,
+    content,
+}: {
+    _id: string;
+    title: string;
+    content: string;
+}) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -16,9 +25,13 @@ export default function NewsSnippet({ _id, title }: { _id: string; title: string
     return (
         <div
             onClick={handleClick}
-            className="cursor-pointer hover:bg-gray-100 p-2 rounded-xl"
+            className="cursor-pointer hover:bg-gray-100 bg-slate-200 px-1 rounded-xl"
         >
-            <p className="font-bold bg-slate-300 rounded-xl p-2">{title}</p>
+            <div className="flex">
+                <BookImage className="bg-slate-400 mx-2 rounded-lg" size = {50} strokeWidth={2} />
+                <p className="font-bold">{title}</p>
+            </div>
+            <p className="">{content}</p>
         </div>
     );
 }

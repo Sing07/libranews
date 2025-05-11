@@ -11,7 +11,7 @@ export default function MightAlsoLike() {
                 <Bob />
             </div>
 
-            <button className="transition-all px-4 pt-6 rounded-full text-blue-600 hover:bg-gray-100 hover:shadow-md focus:outlin-none duration-200 ease-in-out">
+            <button className="transition-all px-4 py-2 rounded-full text-blue-600 hover:bg-gray-100 hover:shadow-md focus:outline-none duration-200 self-center">
                 Show more
             </button>
         </div>

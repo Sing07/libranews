@@ -18,7 +18,7 @@ export default function Happening() {
                 <br />
             </div>
 
-            <button className="transition-all px-4 py-2 rounded-full text-blue-600 hover:bg-gray-100 hover:shadow-md focus:outlin-none duration-200 ease-in-out">
+            <button className="transition-all px-4 py-2 rounded-full text-blue-600 hover:bg-gray-100 hover:shadow-md duration-200 ease-in-out">
                 Show more
             </button>
         </div>

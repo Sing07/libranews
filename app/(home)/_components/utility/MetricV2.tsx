@@ -20,13 +20,12 @@ export default function MetricV2({
 
     async function handleLike() {
         const { likeCount, isLiked } = await likePost(postId, userId);
-
+        setIsLiked(isLiked)
         setLikesCount(likeCount);
     }
 
     async function handleComment() {
         await addCommentToPost(postId, userId, "coment");
-
     }
     async function handleEndorse() {
         await endorsePost(postId, userId);
@@ -61,7 +60,7 @@ export default function MetricV2({
             <div className="flex items-center gap-3 justify-center pl-4">
                 <button onClick={handleLike}>
                     Like
-                    <ThumbsUp color={isLiked ? "#3e9392" : "#000000"} />
+                    <ThumbsUp  color={isLiked ? "#3e9392" : "#000000"} />
                     {likesCount}
                 </button>
                 <button onClick={handleComment}>
