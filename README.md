@@ -1,28 +1,38 @@
-## Getting Started
+# LibraNews
 
-First, spin up the mongodb mock server using Docker compose:
+A modern full-stack news and social platform built with Next.js, MongoDB, and Node.js. Features user authentication, real-time updates, and a modular, scalable architecture.
 
-```bash
-docker compose up -d
 
-npm run dev
-```
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start MongoDB mock server using Docker Compose:**
+   ```bash
+   docker compose up -d
+   ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to run.
 
 ## Highlights & Info of project
 
-
 CSR, SSR, SSG, ISR
 Caching,
 
+Tech Stack Used (MNN):
 
-Tech Stack Used (MNN): 
-- (M)ongoDB
-    Document-oriented database (one of NoSQL)
+- **MongoDB**: Document-oriented NoSQL database
 
-- (N)extJS
-    Meta-framework wrapping ReactJS that adds server side features
+- **Next.js**: React meta-framework with server-side features
+    - Server-side rendering (SSR)
+    - Static site generation (SSG)
+    - Incremental Static Regeneration (ISR)
     - File-based routing next 13.4+ (App Router)
     - Server-side rendering (SSR) – Pages can be rendered on the server before they reach the browser, which improves SEO and speeds up the first load.
     - Server-side rendering (SSR) – Pages can be rendered on the server before they reach the browser, which improves SEO and speeds up the first load.
@@ -34,18 +44,20 @@ Tech Stack Used (MNN):
     - Fast refresh – Changes you make during development appear instantly, without losing component state.
     - Middleware and edge functions – For advanced use cases like request handling closer to the user (geolocation, auth, redirects).
 
-- (N)odeJS  
-    Runtime environment for JavaScript
+- **Node.js**: JavaScript runtime environment
 
-Other Libraries and APIs used
-- [GNewsIO](https://gnews.io/) - api for news in json format
-- [Clerk Auth](https://clerk.com/) - Identity-as-a-Service (IDaaS)
-- [Zod](https://zod.dev/) (Schema validator)
-- [Docker](https://www.docker.com/)
-- [Mongoose ORM for MongoDB](https://mongoosejs.com/)
-- [TailwindCSS](https://tailwindcss.com/), utility-first CSS framework 
+- **Other Libraries & APIs:**
+  - [GNewsIO](https://gnews.io/) – News API
+  - [Clerk Auth](https://clerk.com/) – Authentication as a Service
+  - [Zod](https://zod.dev/) – Schema validation
+  - [Docker](https://www.docker.com/) – Containerization
+  - [Mongoose](https://mongoosejs.com/) – MongoDB ORM
+  - [TailwindCSS](https://tailwindcss.com/) – Utility-first CSS framework
+  
+  ---
 
 ## File structure:
+
 ```
 app
 ├── (home)
@@ -69,7 +81,7 @@ app
 │   └── page.tsx
 ├── globals.css
 └── layout.tsx
-|     
+|
 components
 ├── forms
 └── ui
@@ -90,27 +102,31 @@ lib
     ├── mongoose.ts
     └── seedUserPosts.ts
 ```
-
+---
 
 ## Key takeaways:
+
 - Single Page Application (SPA) design
 - Client/Server Responsibilities Seperation
-- Forms handling, with data cleaning
-- Authentification
-- Databases 
+- Modal (popup view) intercepting pages/route (Interact with posts without leaving homefeed page)
+- Form handling, with validation (Zod)
+- User Authentification with Clerk
+- Databases with MongoDB + Mongoose (ODM)
 - Containerization/Microservices
-- A taste of Full-stack dev 
-    - (dynamic layouts for different screens)
-    - Clean folder structure
+- State handling using NextJS' browser URL api
+- A taste of Full-stack dev
+    - React + Tailwind (dynamic layouts for different screens)
+    - Structural & Systemic folder structure
     - Clear seperation of server or client related folders
 
-
 ## Future Improvements:
-- Try GraphQL for live metric updates
+
+- Add client polling periodally to update live metric counts (likes, shares, etc)
 - Archive data from API for further feature improvements
     - Sentiment analysis for posts
 - Search functionality for users/post
-- Content moderation 
+- Content moderation
 - AI-powered tag suggestions for posts
 - Mobile version
 - Profile customization for users
+- User Authorization; Admin/User features and interface
